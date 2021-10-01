@@ -1,98 +1,55 @@
 {
-    "openapi": "3.0.1",
-    "servers": [
-        {
-          "url": "http://localhost:21268",
-          "description": "Development server"
-        }
-    ],
-    "info": {
-      "title": "Contacts API",
-      "description": "Api for CRUD operations against a contact list.",
-      "contact": {
-        "name": "Jordan Upperman",
-        "url": "https://github.com/Jupperman/ContactsApi",
-        "email": "Jordaneupperman@gmail.com"
-      },
-      "version": "v1"
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Contacts API",
+    "description": "Api for CRUD operations against a contact list.",
+    "contact": {
+      "name": "Jordan Upperman",
+      "url": "https://github.com/Jupperman/ContactsApi",
+      "email": "Jordaneupperman@gmail.com"
     },
-    "paths": {
-      "/Contacts": {
-        "get": {
-          "tags": [
-            "Contacts"
-          ],
-          "responses": {
-            "default": {
-              "description": "Error",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ExistingContactDTO"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ExistingContactDTO"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ExistingContactDTO"
-                    }
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:21268",
+      "description": "IIS Express"
+    },
+    {
+      "url": "http://localhost:5000",
+      "description": "API"
+    }
+  ],
+  "paths": {
+    "/Contacts": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ExistingContactDTO"
                   }
                 }
-              }
-            }
-          }
-        },
-        "post": {
-          "tags": [
-            "Contacts"
-          ],
-          "requestBody": {
-            "content": {
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContactDTO"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ExistingContactDTO"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContactDTO"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ContactDTO"
-                }
-              }
-            }
-          },
-          "responses": {
-            "default": {
-              "description": "Error",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ExistingContactDTO"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ExistingContactDTO"
-                  }
-                },
-                "text/json": {
-                  "schema": {
+                  "type": "array",
+                  "items": {
                     "$ref": "#/components/schemas/ExistingContactDTO"
                   }
                 }
@@ -101,156 +58,46 @@
           }
         }
       },
-      "/Contacts/{id}": {
-        "get": {
-          "tags": [
-            "Contacts"
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
+      "post": {
+        "tags": [
+          "Contacts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
               "schema": {
-                "type": "integer",
-                "format": "int32"
+                "$ref": "#/components/schemas/ContactDTO"
               }
-            }
-          ],
-          "responses": {
-            "default": {
-              "description": "Error",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ExistingContactDTO"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ExistingContactDTO"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ExistingContactDTO"
-                  }
-                }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactDTO"
               }
             }
           }
         },
-        "delete": {
-          "tags": [
-            "Contacts"
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        },
-        "put": {
-          "tags": [
-            "Contacts"
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          ],
-          "requestBody": {
+        "responses": {
+          "default": {
+            "description": "Error",
             "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExistingContactDTO"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContactDTO"
+                  "$ref": "#/components/schemas/ExistingContactDTO"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContactDTO"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ContactDTO"
-                }
-              }
-            }
-          },
-          "responses": {
-            "default": {
-              "description": "Error",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ExistingContactDTO"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ExistingContactDTO"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ExistingContactDTO"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/Contacts/call-list": {
-        "get": {
-          "tags": [
-            "Contacts"
-          ],
-          "responses": {
-            "default": {
-              "description": "Error",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/CallRecord"
-                    }
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/CallRecord"
-                    }
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/CallRecord"
-                    }
-                  }
+                  "$ref": "#/components/schemas/ExistingContactDTO"
                 }
               }
             }
@@ -258,156 +105,318 @@
         }
       }
     },
-    "components": {
-      "schemas": {
-        "AddressDTO": {
-          "type": "object",
-          "properties": {
-            "street": {
-              "type": "string",
-              "nullable": true
-            },
-            "city": {
-              "type": "string",
-              "nullable": true
-            },
-            "state": {
-              "type": "string",
-              "nullable": true
-            },
-            "zip": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "CallRecord": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "$ref": "#/components/schemas/Name"
-            },
-            "phone": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "ContactDTO": {
-          "required": [
-            "name"
-          ],
-          "type": "object",
-          "properties": {
-            "name": {
-              "$ref": "#/components/schemas/NameDTO"
-            },
-            "address": {
-              "$ref": "#/components/schemas/AddressDTO"
-            },
-            "phone": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/PhoneDTO"
-              },
-              "nullable": true
-            },
-            "email": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "ExistingContactDTO": {
-          "required": [
-            "name"
-          ],
-          "type": "object",
-          "properties": {
-            "name": {
-              "$ref": "#/components/schemas/NameDTO"
-            },
-            "address": {
-              "$ref": "#/components/schemas/AddressDTO"
-            },
-            "phone": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/PhoneDTO"
-              },
-              "nullable": true
-            },
-            "email": {
-              "type": "string",
-              "nullable": true
-            },
-            "id": {
+    "/Contacts/{id}": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
               "type": "integer",
               "format": "int32"
             }
-          },
-          "additionalProperties": false
-        },
-        "Name": {
-          "type": "object",
-          "properties": {
-            "first": {
-              "type": "string",
-              "nullable": true
-            },
-            "middle": {
-              "type": "string",
-              "nullable": true
-            },
-            "last": {
-              "type": "string",
-              "nullable": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExistingContactDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExistingContactDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExistingContactDTO"
+                }
+              }
             }
-          },
-          "additionalProperties": false
-        },
-        "NameDTO": {
-          "type": "object",
-          "properties": {
-            "first": {
-              "type": "string",
-              "nullable": true
-            },
-            "middle": {
-              "type": "string",
-              "nullable": true
-            },
-            "last": {
-              "type": "string",
-              "nullable": true
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Contacts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
-          },
-          "additionalProperties": false
-        },
-        "PhoneDTO": {
-          "type": "object",
-          "properties": {
-            "number": {
-              "type": "string",
-              "nullable": true
-            },
-            "type": {
-              "$ref": "#/components/schemas/PhoneTypeDTO"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Contacts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
-          },
-          "additionalProperties": false
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactDTO"
+              }
+            }
+          }
         },
-        "PhoneTypeDTO": {
-          "enum": [
-            "Home",
-            "Work",
-            "Mobile"
-          ],
-          "type": "string"
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExistingContactDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExistingContactDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExistingContactDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Contacts/call-list": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CallRecordDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CallRecordDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CallRecordDTO"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "AddressDTO": {
+        "title": "Address",
+        "type": "object",
+        "properties": {
+          "street": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "zip": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CallRecordDTO": {
+        "title": "Call Record",
+        "required": [
+          "name",
+          "phone"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/NameDTO"
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ContactDTO": {
+        "title": "Contact",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/NameDTO"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressDTO"
+          },
+          "phone": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhoneDTO"
+            },
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExistingContactDTO": {
+        "title": "Existing Contact",
+        "required": [
+          "address",
+          "email",
+          "id",
+          "name",
+          "phone"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/NameDTO"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressDTO"
+          },
+          "phone": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhoneDTO"
+            },
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NameDTO": {
+        "title": "Name",
+        "required": [
+          "first",
+          "last"
+        ],
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": "string",
+            "nullable": true
+          },
+          "middle": {
+            "type": "string",
+            "nullable": true
+          },
+          "last": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PhoneDTO": {
+        "title": "Phone",
+        "required": [
+          "number",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/PhoneTypeDTO"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PhoneTypeDTO": {
+        "title": "PhoneType",
+        "enum": [
+          "Home",
+          "Work",
+          "Mobile"
+        ],
+        "type": "string"
+      }
+    }
   }
+}

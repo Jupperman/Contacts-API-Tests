@@ -16,9 +16,9 @@ export interface AddressDTO {
   zip?: string | null;
 }
 
-export interface CallRecord {
-  name?: Name;
-  phone?: string | null;
+export interface CallRecordDTO {
+  name: NameDTO;
+  phone: string | null;
 }
 
 export interface ContactDTO {
@@ -30,29 +30,23 @@ export interface ContactDTO {
 
 export interface ExistingContactDTO {
   name: NameDTO;
-  address?: AddressDTO;
-  phone?: PhoneDTO[] | null;
-  email?: string | null;
+  address: AddressDTO;
+  phone: PhoneDTO[] | null;
+  email: string | null;
 
   /** @format int32 */
-  id?: number;
-}
-
-export interface Name {
-  first?: string | null;
-  middle?: string | null;
-  last?: string | null;
+  id: number;
 }
 
 export interface NameDTO {
-  first?: string | null;
+  first: string | null;
   middle?: string | null;
-  last?: string | null;
+  last: string | null;
 }
 
 export interface PhoneDTO {
-  number?: string | null;
-  type?: PhoneTypeDTO;
+  number: string | null;
+  type: PhoneTypeDTO;
 }
 
 export type PhoneTypeDTO = "Home" | "Work" | "Mobile";
@@ -134,7 +128,7 @@ export namespace Contacts {
     export type RequestQuery = {};
     export type RequestBody = never;
     export type RequestHeaders = {};
-    export type ResponseBody = CallRecord[];
+    export type ResponseBody = CallRecordDTO[];
   }
 }
 
@@ -354,7 +348,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request GET:/Contacts/call-list
      */
     callListList: (params: RequestParams = {}) =>
-      this.request<CallRecord[], any>({
+      this.request<CallRecordDTO[], any>({
         path: `/Contacts/call-list`,
         method: "GET",
         format: "json",

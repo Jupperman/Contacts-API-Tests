@@ -4,5 +4,6 @@ import * as https from "https";
 export function generateSdk(): sdk.Api<sdk.ApiConfig> {
     return new sdk.Api({
       httpsAgent: new https.Agent({rejectUnauthorized: false})
+      , url: "http://localhost:21268"
     });
   }

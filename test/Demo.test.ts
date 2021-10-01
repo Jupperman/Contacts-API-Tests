@@ -1,7 +1,6 @@
 import * as sdk from "../src/api/Contacts";
 import { generateSdk } from "./utilities";
 import {v4 as stringGenerator} from "uuid";
-import axios from "axios";
 
 describe("Get by ID", () => {
     let mySdk: sdk.Api<sdk.ApiConfig>;
